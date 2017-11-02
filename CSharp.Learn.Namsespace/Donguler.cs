@@ -11,6 +11,7 @@ namespace CSharp.Learn.Namsespace
         public void For()
         {
             int length = 5;
+            /****Bilaltuylu***/
 
             for (int i = 0; i < length; i++)
             {
