@@ -44,6 +44,7 @@ namespace KafeYonetim.Sunum.AnaUygulama
                 Console.WriteLine("6. Masa Ekle");
                 Console.WriteLine("7. Masa Sayısı");
                 Console.WriteLine("8. Garson Ekle");
+                Console.WriteLine("9. Asçı Ekle");
                 Console.WriteLine();
                 Console.Write("Bir seçim yapınız (çıkmak için H harfine basınız): ");
                 var secim = Console.ReadLine();
@@ -58,6 +59,7 @@ namespace KafeYonetim.Sunum.AnaUygulama
                     case "6": MasaEkle(); break;
                     case "7": MasaSayisi(); break;
                     case "8": GarsonEkle(); break;
+                    case "9": AsciEkle(); break;
                     case "h": return;
                     default:
                         break;
@@ -65,6 +67,23 @@ namespace KafeYonetim.Sunum.AnaUygulama
 
             } while (true);
 
+        }
+
+        private static void AsciEkle()
+        {
+            Console.Clear();
+
+            Console.Write("Isim: ");
+            string isim = Console.ReadLine();
+
+            var asci = new Asci(isim, DateTime.Now, DataManager.AktifKafeyiGetir());
+            asci.Puan = 0;
+
+            int id = DataManager.AsciEkle(asci);
+
+            Console.WriteLine($"{id} id'si ile aşçı eklendi.");
+
+            Console.ReadLine();
         }
 
         private static void GarsonEkle()

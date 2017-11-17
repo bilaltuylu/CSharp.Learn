@@ -93,6 +93,24 @@ namespace KafeYonetim.Data
             }
         }
 
+        public static int AsciEkle(Asci asci)
+        {
+            using (var connection = CreateConnection())
+            {
+                var command = new SqlCommand("asciEkle", connection);
+
+                command.Parameters.AddWithValue("@puan", asci.Puan);
+                command.Parameters.AddWithValue("@kafeId", asci.Kafe.Id);
+                command.Parameters.AddWithValue("@isim", asci.Isim);
+
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                var result = Convert.ToInt32(command.ExecuteScalar());
+
+                return result;
+            }
+        }
+
         public static List<Urun> UrunListesiniGetir()
         {
             using (var connection = CreateConnection())
@@ -303,7 +321,7 @@ namespace KafeYonetim.Data
         {
             using (var connection = CreateConnection())
             {
-                var commandGarson = new SqlCommand(@" 
+                var commandGarson = new SqlCommand($@" 
                             INSERT INTO Garson (Bahsis) VALUES (@bahsis); 
                             DECLARE @id int;
                             SET @id= scope_identity();
