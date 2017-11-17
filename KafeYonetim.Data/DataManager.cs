@@ -303,7 +303,7 @@ namespace KafeYonetim.Data
         {
             using (var connection = CreateConnection())
             {
-                var commandGarson = new SqlCommand(@"
+                var commandGarson = new SqlCommand(@" 
                             INSERT INTO Garson (Bahsis) VALUES (@bahsis); 
                             DECLARE @id int;
                             SET @id= scope_identity();
