@@ -35,5 +35,7 @@ namespace KafeYonetim.Lib
         {
             MesaideMi = false;
         }
+
+        //yorum
     }
 }
