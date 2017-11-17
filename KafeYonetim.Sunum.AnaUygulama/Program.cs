@@ -45,6 +45,7 @@ namespace KafeYonetim.Sunum.AnaUygulama
                 Console.WriteLine("7. Masa Sayısı");
                 Console.WriteLine("8. Garson Ekle");
                 Console.WriteLine("9. Asçı Ekle");
+                Console.WriteLine("10. Çalışanları Listele");
                 Console.WriteLine();
                 Console.Write("Bir seçim yapınız (çıkmak için H harfine basınız): ");
                 var secim = Console.ReadLine();
@@ -60,6 +61,7 @@ namespace KafeYonetim.Sunum.AnaUygulama
                     case "7": MasaSayisi(); break;
                     case "8": GarsonEkle(); break;
                     case "9": AsciEkle(); break;
+                    case "10": CalisanListesiniGetir(); break;
                     case "h": return;
                     default:
                         break;
@@ -67,6 +69,26 @@ namespace KafeYonetim.Sunum.AnaUygulama
 
             } while (true);
 
+        }
+
+        private static void CalisanListesiniGetir()
+        {
+            Console.Clear();
+
+            List<Calisan> liste = DataManager.CalisanListesiniGetir();
+
+            Console.Write("Id".PadRight(5));
+            Console.Write("İsim".PadRight(30));
+            Console.Write("İşe Giriş Tarihi".PadRight(20));
+            Console.WriteLine("Görev");
+            Console.WriteLine("".PadRight(60, '='));
+
+            foreach (var calisan in liste)
+            {
+                Console.WriteLine($"{calisan.Id.ToString().PadRight(5)}{calisan.Isim.PadRight(30)}{calisan.IseGirisTarihi.ToString("yyyy.MMMM.dddd").PadRight(20)}{calisan.Gorev.GorevAdi}");
+            }
+
+            Console.ReadLine();
         }
 
         private static void AsciEkle()
